@@ -4,7 +4,7 @@
   "description": "review the history of CSS layout, learn how to use flex and grid",
   "scripts": {
     "start": "live-server --port=8001 --host=localhost --ignore=.git,node_modules",
-    "watch:stylus": "stylus -w styl/screen.styl -o css/"
+    "watch:stylus": "stylus -w styl/screen.styl -o css/ --sourcemap"
   },
   "author": {
     "name": "Meathill",
