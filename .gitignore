@@ -1,1 +1,12 @@
+# IDE
+.idea
+
+# repo
+node_modules
+
+# build
+/css
+
+# temp
+/tmp
 /*.jpg
