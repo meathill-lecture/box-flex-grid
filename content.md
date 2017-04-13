@@ -302,6 +302,20 @@ Note:
 2. 然后声明每个格子的尺寸
 3. 页面元素声明自己占几个格子来实现布局
 
+<!-- section -->
+
+### 简单范例
+
+<iframe height='265' scrolling='no' title='bfg-grid-started' src='//codepen.io/meathill/embed/VbwgYB/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/VbwgYB/'>bfg-grid-started</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+
+<!-- section -->
+
+### 给网格命名
+
+<iframe height='265' scrolling='no' title='bfg-grid-area' src='//codepen.io/meathill/embed/LyYapK/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/LyYapK/'>bfg-grid-area</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+
 <!-- page -->
 
 ### Grid 会取代 Flex 么？
@@ -332,4 +346,5 @@ Q&A
 [Block formatting context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context)
 [CSS position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 [A Guide To Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-[complete-guide-grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+[Complete Guide Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+[MDN CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
