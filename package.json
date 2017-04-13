@@ -1,5 +1,5 @@
 {
-  "name": "Box, Flex, Grid",
+  "name": "box-flex-grid",
   "version": "0.1.0",
   "description": "review the history of CSS layout, learn how to use flex and grid",
   "scripts": {

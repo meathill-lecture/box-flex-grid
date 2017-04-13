@@ -1,12 +1,41 @@
+bg-color = #032b35
+trans-color = #35555d
+
 #layout-sample,
 #layout-sample div
-  background-color rgba(255,255,255,.2)
-  border 1px solid white
   padding 2rem
 
 #layout-sample
+  background-color rgba(255,255,255,.2)
+  border 1px dashed white
+
+  &:hover
+    background-color rgba(255,255,255,.3)
+
   .border-box
     background-color white
+
+    &:hover
+      background-color darken(white, 20%)
+
+    > h4
+      color bg-color
+
+  .padding-box
+    background-color trans-color
+
+    &:hover
+      background-color lighten(trans-color, 10%)
+
+  .content
+    background-color bg-color
+    border 1px dashed white
+
+    &:hover
+      background-color lighten(bg-color, 15%)
+
+    h4
+      margin-bottom 0
 
   h4
     text-transform none
