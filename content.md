@@ -107,7 +107,7 @@ Note:
 
 <!-- section -->
 
-<iframe height='500' scrolling='no' title='bfg-ideal-box' src='//codepen.io/meathill/embed/MmWBjB/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/MmWBjB/'>bfg-ideal-box</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='bfg-ideal-box' src='//codepen.io/meathill/embed/MmWBjB/?height=500&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/MmWBjB/'>bfg-ideal-box</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
 <!-- page -->
@@ -122,6 +122,12 @@ Note:
 4. BFC 不与 float box 叠加
 5. BFC 相对独立，内外元素互不影响
 6. 计算 BFC 高度时，浮动元素也参加计算
+
+<!-- section -->
+
+#### BFC 最奇葩的一点
+
+## 要解决问题，一定要手工触发……
 
 <!-- section -->
 
@@ -146,10 +152,12 @@ Note:
 
 <!-- page -->
 
-### 绝对定位 `position:absolute`
+### 绝对定位 
+### `position:absolute`
 
 1. 相对于最近的上级非 `position:static` 元素相对定位
 2. 不在文档流，不影响其它元素渲染
+3. 不产生 reflow 和 repaint
 
 <!-- section -->
 
@@ -180,21 +188,25 @@ aside
   margin 0 200px
 ```
 
+<small>范例文件：`./sample/shengbei.html`</small>
+
 <!-- page -->
 
-### 固定定位 `position:fixed`
+### 固定定位
+### `position:fixed`
 
 1. 相对于窗口相对定位
-2. 脱离文档流
+2. 类似 `absolute`，脱离文档流
 3. 通常用来做顶部菜单
 
 <!-- page -->
 
-### 滚动定位 `position:sticky`
+### 滚动定位
+### `position:sticky`
 
-1. 在一定范围内，随窗口滚动，形似 `static`
-2. 在另外范围内，固定在窗口特定位置，形似 `fixed`
-3. 当其父元素消失，它也随之消失
+1. 当父元素显示，其常规位置也处于视口中，则随窗口滚动，形似 `static`
+2. 当父元素显示，它滚出视口，则固定在窗口特定位置，形似 `fixed`
+3. 当其父元素滚出视口，它也随之消失
 
 <!-- section -->
 
@@ -230,7 +242,7 @@ html, body {
 
 ## 浮动
 
-### 不是万不得已，不要使用浮动。
+### 不到万不得已，不要使用浮动。
 
 <!-- section -->
 
@@ -287,7 +299,9 @@ Note:
 <iframe height='500' scrolling='no' title='bfg-flex-cup' src='//codepen.io/meathill/embed/PmoxyJ/?height=500&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/dWyQKM/'>bfg-flex-cup</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
-<!-- 完全居中 -->
+<!-- section -->
+
+### 完全居中
 
 <iframe height='500' scrolling='no' title='bfg-flex-all-center' src='//codepen.io/meathill/embed/zwYMQY/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/zwYMQY/'>bfg-flex-all-center</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
@@ -306,14 +320,14 @@ Note:
 
 ### 简单范例
 
-<iframe height='265' scrolling='no' title='bfg-grid-started' src='//codepen.io/meathill/embed/VbwgYB/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/VbwgYB/'>bfg-grid-started</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='bfg-grid-started' src='//codepen.io/meathill/embed/VbwgYB/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/VbwgYB/'>bfg-grid-started</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
 <!-- section -->
 
 ### 给网格命名
 
-<iframe height='265' scrolling='no' title='bfg-grid-area' src='//codepen.io/meathill/embed/LyYapK/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/LyYapK/'>bfg-grid-area</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='bfg-grid-area' src='//codepen.io/meathill/embed/LyYapK/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/LyYapK/'>bfg-grid-area</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
 <!-- page -->
