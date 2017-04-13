@@ -341,10 +341,10 @@ Q&A
 
 ## 参考文章
 
-[CSS之BFC详解](http://www.html-js.com/article/1866)
-[http://www.w3.org/TR/CSS2/visuren.html#block-formatting](http://www.w3.org/TR/CSS2/visuren.html#block-formatting)
-[Block formatting context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context)
-[CSS position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
-[A Guide To Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-[Complete Guide Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
-[MDN CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+* [CSS之BFC详解](http://www.html-js.com/article/1866)
+* [http://www.w3.org/TR/CSS2/visuren.html#block-formatting](http://www.w3.org/TR/CSS2/visuren.html#block-formatting)
+* [Block formatting context](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context)
+* [CSS position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+* [A Guide To Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [Complete Guide Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+* [MDN CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
