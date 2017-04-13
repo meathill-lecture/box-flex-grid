@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>圣杯布局</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    aside {
+      background-color: #d35400;
+      color: white;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 200px;
+    }
+    aside.left {
+      left: 0;
+    }
+    aside.right {
+      right: 0;
+    }
+    .content {
+      margin: 0 200px;
+    }
+  </style>
+</head>
+<body>
+
+<aside class="left">
+  左边栏
+</aside>
+<div class="content">
+  主内容区
+</div>
+<aside class="right">
+  右边栏
+</aside>
+</body>
+</html>
