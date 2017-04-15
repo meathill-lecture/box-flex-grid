@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Box, Flex, Grid</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="//cdn.staticfile.org/reveal.js/3.4.1/css/reveal.min.css">
+  <link rel="stylesheet" href="//cdn.staticfile.org/reveal.js/3.4.1/css/theme/moon.min.css">
+  <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/darcula.min.css">
+  <link rel="stylesheet" href="http://qiniu.meathill.com/static/meathill-reveal-theme/css/meathill-reveal-theme.min.css">
+  <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="./css/screen.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section><!--
+title: Box, Flex, Grid
+description: review the history of CSS layout, learn how to use flex and grid
+-->
+<h2 id="web-">Web 永恒不变的主题：布局</h2>
+<h1 id="box-flex-grid">Box &gt; Flex &gt; Grid</h1>
+</section><section><p>[author]</p>
+</section><section><h3 id="-">课程简介</h3>
+<ul>
+<li>回顾盒模型</li>
+<li>回顾定位属性</li>
+<li>学习 Flex</li>
+<li>介绍 Grid</li>
+</ul>
+</section><section><h3 id="-">前言</h3>
+<p>互联网高速发展，海量用户涌入，刺激厂商和开发者绞尽脑汁以网页为平台提供商品。</p>
+<p>这些商品多半功能丰富、交互复杂，对 UI 要求很高。</p>
+<p>创造好的 UI 需要善用 CSS 布局，然而 CSS 布局却有着各种奇奇怪怪的设定，早期开发者只有随着这些诡异的节奏起舞……</p>
+</section><section><h4 id="-css-">早期 CSS 布局</h4>
+<h2 id="box-inline">Box &amp; inline</h2>
+</section><section><section><h2 id="-box">块级元素 Box</h2>
+<ol>
+<li><code>display:block</code></li>
+<li><code>&lt;div&gt;</code> <code>&lt;table&gt;</code> <code>&lt;h1&gt;</code> <code>&lt;p&gt;</code> 以及大部分我们会拿来做布局的元素</li>
+<li>占据独立的四方形空间</li>
+</ol>
+</section><section><h2 id="-inline">行内元素 inline</h2>
+<ol>
+<li><code>display:inline</code></li>
+<li><code>&lt;strong&gt;</code> <code>&lt;i&gt;</code> <code>&lt;em&gt;</code></li>
+<li>与其它行内元素顺序排列，排满一行，自动换行。</li>
+</ol>
+</section></section><section><section><h2 id="-">块级元素</h2>
+<h3 id="-display-block-"><code>display: block;</code></h3>
+</section><section><h2 id="-">块级元素的构成</h2>
+<div class="margin-box" id="layout-sample">
+  <h4>margin</h4>
+  <div class="border-box">
+    <h4>border</h4>
+    <div class="padding-box">
+      <h4>padding</h4>
+      <div class="content">
+        <h4>Content</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section></section><section><section><p>它有以下特点：</p>
+<ol>
+<li>默认宽度为父元素的宽度</li>
+<li>默认高度为子元素的高度</li>
+<li>可以指定高度和宽度</li>
+</ol>
+</section><section><iframe height="500" scrolling="no" title="bfg-normal-box" src="//codepen.io/meathill/embed/ybLqYK/?height=500&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/ybLqYK/">bfg-normal-box</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><section><h3 id="-">我理想中的盒模型</h3>
+<ol>
+<li>默认宽度 100%</li>
+<li>设置宽度后，按设置的宽度呈现</li>
+<li>一行没占满，自动往后续，续的方向由 CSS 指定</li>
+<li>占满一行自动换行</li>
+<li>父元素的高度由子元素总高度决定</li>
+<li>严格占据自己的方形空间</li>
+</ol>
+</section><section><h4 id="-">事实上……</h4>
+</section><section><iframe height="500" scrolling="no" title="bfg-ideal-box" src="//codepen.io/meathill/embed/MmWBjB/?height=500&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/MmWBjB/">bfg-ideal-box</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><section><h3 id="-block-formatting-context-https-developer-mozilla-org-en-us-docs-web-guide-css-block_formatting_context-"><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context">Block Formatting Context</a></h3>
+<p>块级元素格式化上下文，BFC</p>
+<ol>
+<li>内部的 Box 垂直放置</li>
+<li>垂直方向的距离由 <code>margin</code> 决定，属于同一 BFC 的相邻 Box 的 <code>margin</code> 会叠加</li>
+<li>每个元素的 <code>margin-box</code> 左边与包含块 <code>border-box</code> 的左边相接，即使存在浮动也如此</li>
+<li>BFC 不与 float box 叠加</li>
+<li>BFC 相对独立，内外元素互不影响</li>
+<li>计算 BFC 高度时，浮动元素也参加计算</li>
+</ol>
+</section><section><h3 id="-body-bfc">默认情况下，只有 <code>&lt;body&gt;</code> 启动 BFC</h3>
+<p>其它元素默认没有触发 BFC，需要我们手动触发。</p>
+</section><section><h4 id="-">我也不确定为什么……</h4>
+</section><section><p>臆断之：</p>
+<ol>
+<li>创造网页的目的是阅读文献，没有太多考虑过布局</li>
+<li>早期浏览器事实标准太强，IE 统治很多年，很多 Bug 被当成 Feature 保留下来</li>
+<li>早期没有前端，互联网产品以图文阅读为主，浏览器做成啥鬼样子都可以</li>
+</ol>
+</section><section><iframe height="500" scrolling="no" title="bfg-bfc" src="//codepen.io/meathill/embed/RVwBxo/?height=500&theme-id=0&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/RVwBxo/">bfg-bfc</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><section><h2 id="-">定位</h2>
+<h2 id="-position-"><code>position</code></h2>
+</section><section><ol>
+<li><code>static</code> 静态文档流</li>
+<li><code>relative</code> 相对定位</li>
+<li><code>absolute</code> 绝对定位</li>
+<li><code>fixed</code> 相对于屏幕绝对定位</li>
+<li><code>sticky</code> 相对于滚动条绝对定位</li>
+</ol>
+</section></section><section><section><h3 id="-">绝对定位</h3>
+<h3 id="-position-absolute-"><code>position:absolute</code></h3>
+<ol>
+<li>相对于最近的上级非 <code>position:static</code> 元素定位</li>
+<li>脱离文档流，不影响其它元素渲染</li>
+<li>修改它的 DOM 不产生整体的 reflow 和 repaint</li>
+</ol>
+</section><section><h4 id="-">实例：解决“圣杯布局”</h4>
+<div id="cup">
+  <aside>定宽</aside>
+  <div class="content">自适应</div>
+  <aside>定宽</aside>
+</div>
+
+</section><section><pre><code class="lang-stylus">aside
+  position absolute
+  top 0
+  bottom 0
+  width 200px
+
+  &amp;.left
+    left 0
+
+  &amp;.right
+    right 0
+
+.content
+  margin 0 200px
+</code></pre>
+<p><small>范例文件：<code>./sample/shengbei.html</code></small></p>
+</section></section><section><section><h3 id="-">固定定位</h3>
+<h3 id="-position-fixed-"><code>position:fixed</code></h3>
+<ol>
+<li>相对于窗口定位</li>
+<li>类似 <code>absolute</code>，脱离文档流</li>
+<li>通常用来做顶部菜单和弹窗</li>
+</ol>
+</section><section><h3 id="-">实例：弹窗</h3>
+<iframe height="500" scrolling="no" title="bfg-position-modal" src="//codepen.io/meathill/embed/RVNpqy/?height=500&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/RVNpqy/">bfg-position-modal</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><section><h3 id="-">滚动定位</h3>
+<h3 id="-position-sticky-"><code>position:sticky</code></h3>
+<ol>
+<li>当父元素显示，其常规位置也处于视口中，则随窗口滚动，形似 <code>static</code></li>
+<li>当父元素显示，它滚出视口，则固定在窗口特定位置，形似 <code>fixed</code></li>
+<li>当其父元素滚出视口，它也随之消失</li>
+</ol>
+</section><section><iframe height="500" scrolling="no" title="Sticky positioning" src="//codepen.io/meathill/embed/RVwevw/?height=500&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/meathill/pen/RVwevw/">Sticky positioning</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><h2 id="-box-sizing-"><code>box-sizing</code></h2>
+<p>声明盒子的尺寸以哪个层级计算。再看一眼 <a href="#/6/1">盒模型</a>。</p>
+<ol>
+<li>早年默认 <code>content-box</code></li>
+<li>如今通常重置为 <code>border-box</code></li>
+</ol>
+</section><section><section><h2 id="-">其它常用布局</h2>
+</section><section><h3 id="-">默认全屏</h3>
+<pre><code class="lang-css">html, body {
+  height: 100%;
+}
+</code></pre>
+</section><section></section></section><section><section><h2 id="-">浮动</h2>
+<h3 id="-">不到万不得已，不要使用浮动。</h3>
+</section><section><h3 id="-">不用浮动，我用什么呢？</h3>
+</section><section><h3 id="flexbox">Flexbox</h3>
+<p>作为前端开发者，我们必须与时俱进，眼下这个时刻，flexbox 无疑是比浮动好得多得多的选择。</p>
+</section></section><section><section><h2 id="flexbox">Flexbox</h2>
+<p>赋予元素弹性，使其更适应多种多样的分辨率。</p>
+</section><section><h3 id="-">核心属性</h3>
+<pre><code class="lang-stylus">.container
+  display flex // 声明容器是个 flex 容器
+  justify-content center // 子元素在主轴上的排列方式
+  align-items center // 子元素在测轴上的排列方式
+  flex-direction row/column // 横向/纵向 分布，主轴
+  flex-wrap wrap // 是否允许换行
+
+.item
+  flex-basis 100px // 子元素的初始宽度
+  flex-grow 1 // 当容器宽度大于一行总宽度时，元素扩张的比例
+  flex-shrink 1 // 当容器宽度小于一行总宽度时，元素收缩的比例
+  order 1 // 子元素的显示顺序
+</code></pre>
+</section></section><section><section><h3 id="flex-box-">Flex-box 案例</h3>
+</section><section><h3 id="-">圣杯布局</h3>
+<iframe height="500" scrolling="no" title="bfg-flex-cup" src="//codepen.io/meathill/embed/dWyQKM/?height=500&theme-id=0&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/dWyQKM/">bfg-flex-cup</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section><section><h3 id="-">图片列表</h3>
+<iframe height="500" scrolling="no" title="bfg-flex-cup" src="//codepen.io/meathill/embed/PmoxyJ/?height=500&theme-id=0&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/dWyQKM/">bfg-flex-cup</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section><section><h3 id="-">完全居中</h3>
+<iframe height="500" scrolling="no" title="bfg-flex-all-center" src="//codepen.io/meathill/embed/zwYMQY/?height=500&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/zwYMQY/">bfg-flex-all-center</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><section><h2 id="grid">Grid</h2>
+<p>史上最强大的布局系统，以二维为基础的布局系统。</p>
+<ol>
+<li>Grid 先把一个区域划分为 N x M 的网格</li>
+<li>然后声明每个格子的尺寸</li>
+<li>页面元素声明自己占几个格子来实现布局</li>
+</ol>
+</section><section><h3 id="-">核心属性</h3>
+<pre><code class="lang-stylus">.container
+  grid-template-columns 1fr 1fr 1fr // 每列宽度
+  grid-template-rows 100px 100px 100px // 每行宽度
+  grid-template-areas // 声明每个分块的名称
+    &quot;header header header&quot;
+    &quot;aside main main&quot;
+    &quot;footer footer footer&quot;
+  grid-column-gap 10px //列间距
+  grid-row-gap 1rem //行间距
+
+.item
+  grid-column 1/2 // 占据哪几列，以线为标记
+  grid-row 2/4 // 占据哪几行，以线为标记
+  grid-area header // 占据哪些区域
+  justify-self center // 在这一块里，横向对齐的方式
+  align-self center // 在这一块里，总想对齐的方式
+</code></pre>
+</section></section><section><section><h3 id="-">简单范例</h3>
+<iframe height="500" scrolling="no" title="bfg-grid-sample" src="//codepen.io/meathill/embed/Qvwoer/?height=500&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/Qvwoer/">bfg-grid-sample</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section><section><iframe height="500" scrolling="no" title="bfg-grid-started" src="//codepen.io/meathill/embed/VbwgYB/?height=500&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/VbwgYB/">bfg-grid-started</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section><section><h3 id="-">给网格命名</h3>
+<iframe height="500" scrolling="no" title="bfg-grid-area" src="//codepen.io/meathill/embed/LyYapK/?height=500&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/meathill/pen/LyYapK/">bfg-grid-area</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><section><h3 id="grid-flex-">Grid 会取代 Flex 么？</h3>
+<p>我认为不会。原因有三：</p>
+<ol>
+<li>Grid 还很新，需要时间普及，还有很多浏览器不支持</li>
+<li>Flex 和 Grid 各有所长，有些地方并不是那么好画格子</li>
+<li>移动互联网时代，我们对 Grid 的需求并不强烈……</li>
+</ol>
+</section><section><h3 id="-">最好的做法，当然是搭配使用</h3>
+<iframe height="600" scrolling="no" title="bfg-grid-flex-weixin" src="//codepen.io/meathill/embed/MmYREM/?height=600&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/meathill/pen/MmYREM/">bfg-grid-flex-weixin</a> by Meathill (<a href="http://codepen.io/meathill">@meathill</a>) on <a href="http://codepen.io">CodePen</a>.
+</iframe>
+
+</section></section><section><h2 id="-">注意事项：</h2>
+<ol>
+<li>CSS 布局是一套非常复杂的系统。有很多属性会影响布局，比如 <code>float</code>、<code>postition:abosulut</code> 的元素自动转化为块级元素。限于篇幅，本教程中未全面介绍这些会互相影响的属性，希望大家自行查阅文档。</li>
+<li>同样限于篇幅，很多 Flex、Grid 的属性这里也没有展开介绍，请大家认真阅读后面的相关资料，并在使用中学习记忆。</li>
+</ol>
+</section><section><p>Q&amp;A</p>
+</section><section><h2 id="-">参考文章</h2>
+<ul>
+<li><a href="http://www.html-js.com/article/1866">CSS之BFC详解</a></li>
+<li><a href="http://www.w3.org/TR/CSS2/visuren.html#block-formatting">http://www.w3.org/TR/CSS2/visuren.html#block-formatting</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context">Block formatting context</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">CSS position</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Guide To Flexbox</a></li>
+<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Complete Guide Grid</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">MDN CSS Grid Layout</a></li>
+</ul>
+</section>
+  </div>
+</div>
+<script src="//cdn.staticfile.org/reveal.js/3.4.1/lib/js/head.min.js"></script>
+<script src="//cdn.staticfile.org/reveal.js/3.4.1/js/reveal.min.js"></script>
+<script src="./app/main.js"></script>
+</body>
+</html>

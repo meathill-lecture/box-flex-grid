@@ -321,7 +321,7 @@ Note:
 
 ### 完全居中
 
-<iframe height='500' scrolling='no' title='bfg-flex-all-center' src='//codepen.io/meathill/embed/zwYMQY/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/zwYMQY/'>bfg-flex-all-center</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='bfg-flex-all-center' src='//codepen.io/meathill/embed/zwYMQY/?height=500&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/zwYMQY/'>bfg-flex-all-center</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
 <!-- page -->
@@ -336,7 +336,35 @@ Note:
 
 <!-- section -->
 
+### 核心属性
+
+```stylus
+.container
+  grid-template-columns 1fr 1fr 1fr // 每列宽度
+  grid-template-rows 100px 100px 100px // 每行宽度
+  grid-template-areas // 声明每个分块的名称
+    "header header header"
+    "aside main main"
+    "footer footer footer"
+  grid-column-gap 10px //列间距
+  grid-row-gap 1rem //行间距
+    
+.item
+  grid-column 1/2 // 占据哪几列，以线为标记
+  grid-row 2/4 // 占据哪几行，以线为标记
+  grid-area header // 占据哪些区域
+  justify-self center // 在这一块里，横向对齐的方式
+  align-self center // 在这一块里，总想对齐的方式
+```
+
+<!-- page -->
+
 ### 简单范例
+
+<iframe height='500' scrolling='no' title='bfg-grid-sample' src='//codepen.io/meathill/embed/Qvwoer/?height=500&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/Qvwoer/'>bfg-grid-sample</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+
+<!-- section -->
 
 <iframe height='500' scrolling='no' title='bfg-grid-started' src='//codepen.io/meathill/embed/VbwgYB/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/VbwgYB/'>bfg-grid-started</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
@@ -345,7 +373,7 @@ Note:
 
 ### 给网格命名
 
-<iframe height='500' scrolling='no' title='bfg-grid-area' src='//codepen.io/meathill/embed/LyYapK/?height=500&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/LyYapK/'>bfg-grid-area</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='bfg-grid-area' src='//codepen.io/meathill/embed/LyYapK/?height=500&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/meathill/pen/LyYapK/'>bfg-grid-area</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
 <!-- page -->
@@ -357,6 +385,13 @@ Note:
 1. Grid 还很新，需要时间普及，还有很多浏览器不支持
 2. Flex 和 Grid 各有所长，有些地方并不是那么好画格子
 3. 移动互联网时代，我们对 Grid 的需求并不强烈……
+
+<!-- section -->
+
+### 最好的做法，当然是搭配使用
+
+<iframe height='600' scrolling='no' title='bfg-grid-flex-weixin' src='//codepen.io/meathill/embed/MmYREM/?height=600&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/meathill/pen/MmYREM/'>bfg-grid-flex-weixin</a> by Meathill (<a href='http://codepen.io/meathill'>@meathill</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
 
 <!-- page -->
 

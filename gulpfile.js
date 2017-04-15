@@ -13,29 +13,9 @@ const uglify = require('gulp-uglify');
 const stylus = require('gulp-stylus');
 const clean = require('gulp-clean-css');
 const marked = require('marked');
-const CDN = require('./cdn.json');
+const {compiler, toCDN} = require('meathill-reveal-markdown-compiler');
 const DOC = 'docs/';
 const PATH_REG = /\.\/node_modules\/([\w.\-]+)\//g;
-
-let renderer = new marked.Renderer();
-let separator = ' | ';
-renderer.image = function (href, title, text) {
-  let attrs = '';
-  title = title || '';
-  text = text || '';
-  if (href.indexOf(separator) !== -1) {
-    attrs = href.split(separator);
-    href = attrs[0];
-    attrs = attrs[1].split(' ').filter(item => {
-        return item;
-  }).map(pairs => {
-      let arr = pairs.split('=');
-    return `${arr[0]}="${arr[1]}"`;
-  }).join(' ');
-  }
-
-  return `<img src="${href}" title="${title}" alt="${text}" ${attrs}>`;
-};
 
 
 gulp.task('clear', () => {
@@ -64,35 +44,13 @@ gulp.task('copy', () => {
 });
 
 gulp.task('html', () => {
-  let content = fs.readFileSync('./content.md', 'utf8');
-  let pages = content.split('<!-- page -->');
-  pages = pages.map( page => {
-    let pages = page.split('<!-- section -->');
-    pages = pages.map( page => {
-      page = page.split('Note:')[0];
-      return '<section>' + marked(page, {renderer: renderer}) + '</section>';
-    });
-    if (pages.length > 1) {
-      return '<section>' + pages.join('') + '</section>';
-    } else {
-      return pages[0];
-    }
-  });
-  return gulp.src('index.dev.html')
-    .pipe(replace(PATH_REG, toCDN))
-    .pipe(replace(/<section[\S\s]+>\s+<\/section>/, pages.join('')))
-    .pipe(rename('index.html'))
-    .pipe(gulp.dest(`${DOC}`));
+  return compiler('index.dev.html', 'content.md', `${DOC}index.html`);
 });
 
 gulp.task('default', taskDone => {
   sequence(
-  'clear',
-  ['html', 'stylus', 'js', 'copy'],
-taskDone
-);
+    'clear',
+    ['html', 'stylus', 'js', 'copy'],
+    taskDone
+  );
 });
-
-function toCDN(match, key) {
-  return CDN[key];
-}
