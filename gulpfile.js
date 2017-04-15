@@ -13,7 +13,7 @@ const uglify = require('gulp-uglify');
 const stylus = require('gulp-stylus');
 const clean = require('gulp-clean-css');
 const marked = require('marked');
-const {compiler, toCDN} = require('meathill-reveal-markdown-compiler');
+const {compiler, toCDN} = require('reveal-markdown-compiler');
 const DOC = 'docs/';
 const PATH_REG = /\.\/node_modules\/([\w.\-]+)\//g;
 

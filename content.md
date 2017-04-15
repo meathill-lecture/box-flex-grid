@@ -7,9 +7,11 @@ description: review the history of CSS layout, learn how to use flex and grid
 
 # Box > Flex > Grid
 
+[@meathill](https://weibo.com/meathill/)
+
 <!-- page -->
 
-[author]
+{{> author}}
 
 <!-- page -->
 
