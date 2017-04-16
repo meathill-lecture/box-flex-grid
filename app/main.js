@@ -2,8 +2,26 @@
  * Created by realm on 2017/4/6.
  */
 
+var search = location.search;
+var query = {};
+if (search) {
+  search = search.substr(1);
+  search = search.split('&');
+  for (var i = 0, len = search.length; i < len; i++) {
+    var kv = search[i].split('=');
+    if (!isNaN(kv[1])) {
+      kv[1] = Number(kv[1]);
+    }
+    if (/^true|false$/i.test(kv[1])) {
+      kv[1] = Boolean(kv[1]);
+    }
+    query[kv[0]] = kv[1];
+  }
+}
+
 Reveal.initialize({
   history: true,
+  controls: 'controls' in query ? query.controls : true,
   dependencies: [
     {
       src: './node_modules/reveal.js/plugin/markdown/marked.js',
@@ -27,7 +45,7 @@ Reveal.initialize({
   ]
 });
 
-if (location.search.match(/print/gi)) {
+if (query.print) {
   var link = document.createElement( 'link' );
   link.rel = 'stylesheet';
   link.type = 'text/css';
