@@ -22,6 +22,7 @@ if (search) {
 Reveal.initialize({
   history: true,
   controls: 'controls' in query ? query.controls : true,
+  transition: query.transition || 'slide',
   dependencies: [
     {
       src: './node_modules/reveal.js/plugin/markdown/marked.js',
